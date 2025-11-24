@@ -1,9 +1,9 @@
-// components/Layout.tsx
 "use client";
 
 import { ReactNode, useState } from 'react';
 import ResponsiveNavbar from './responsiveNavbar';
 import Sidebar from './sidebar';
+import Footer from '../footer/page';
 
 interface LayoutProps {
     children: ReactNode;
@@ -41,6 +41,8 @@ export default function Layout({ children }: LayoutProps) {
                 <main className="flex-1 p-6">
                     {children}
                 </main>
+                {/* 页脚 */}
+                <Footer />
             </div>
         </div>
     );

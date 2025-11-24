@@ -1,4 +1,3 @@
-// components/responsiveNavbar.tsx
 "use client";
 import { Bars4Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
