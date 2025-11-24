@@ -7,7 +7,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { SidebarItem } from './config';
+import { SidebarItem } from '../../app/config/config';
 
 interface SidebarProps {
     /// H5 导航栏

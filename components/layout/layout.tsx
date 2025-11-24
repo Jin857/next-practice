@@ -1,9 +1,9 @@
 "use client";
 
 import { ReactNode, useState } from 'react';
-import ResponsiveNavbar from './responsiveNavbar';
-import Sidebar from './sidebar';
-import Footer from '../footer/page';
+import ResponsiveNavbar from '@/components/layout/responsiveNavbar';
+import Sidebar from '@/components/layout/sidebar';
+import Footer from '@/components/footer/page';
 
 interface LayoutProps {
     children: ReactNode;

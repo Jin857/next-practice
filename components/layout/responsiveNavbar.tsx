@@ -1,7 +1,7 @@
 "use client";
 import { Bars4Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { navigation, NavigationItem } from './config';
+import { navigation, NavigationItem } from '../../app/config/config';
 
 
 interface ResponsiveNavbarProps {

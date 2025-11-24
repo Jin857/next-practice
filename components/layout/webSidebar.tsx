@@ -5,7 +5,7 @@ import {
     ChevronRightIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { SidebarItem } from './config';
+import { SidebarItem } from '../../app/config/config';
 import "./globals.css";
 
 

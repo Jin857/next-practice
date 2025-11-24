@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import H5Sidebar from './h5Sidebar';
-import { sidebarItems } from './config';
-import WebSidebar from './webSidebar';
+import H5Sidebar from '@/components/layout/h5Sidebar';
+import { sidebarItems } from '../../app/config/config';
+import WebSidebar from '@/components/layout/webSidebar';
 
 
 
