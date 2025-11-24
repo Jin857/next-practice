@@ -16,6 +16,10 @@
   background: #a8a8a8;
 }
 
+.blackgroldcolor {
+  background: #F6F6F6;
+}
+
 /* 平滑过渡 */
 * {
   transition-property: color, background-color, border-color, transform;

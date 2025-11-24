@@ -1,7 +1,7 @@
 "use client";
 import { Bars4Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { navigation, NavigationItem } from '../../app/config/config';
+import { navigation, NavigationItem } from '@/app/config/config';
 
 
 interface ResponsiveNavbarProps {
@@ -11,7 +11,7 @@ interface ResponsiveNavbarProps {
 export default function ResponsiveNavbar({ onToggleSidebar }: ResponsiveNavbarProps) {
     return (
         <header className="bg-white shadow-sm sticky top-0 z-40">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between p-2 lg:px-8" aria-label="Global">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
                 <div className="flex items-center gap-x-4">
                     <Link href="/" className="flex items-center">
                         <div className="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">

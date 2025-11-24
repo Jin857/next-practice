@@ -1,16 +1,12 @@
 "use client";
 
-import { Montserrat } from "next/font/google";
 import "./footer.css";
 
-const montserrat = Montserrat({
-  weight: ['400', '700'], // 对于非可变字体，必须指定字重[citation:6]
-  subsets: ['latin'],
-});
+
 
 export default function Footer() {
   return (
-    <footer className="footer montserrat">
+    <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">BrandName</div>
         <p className="footer-description">我们致力于提供最优质的产品和服务，让每一位客户都能感受到我们的专业与热情。</p>

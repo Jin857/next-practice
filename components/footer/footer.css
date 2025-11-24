@@ -1,30 +1,3 @@
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  color: #333;
-}
-
-.content {
-  flex: 1;
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #2c3e50;
-}
-
-p {
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
 /* Footer 样式 */
 .footer {
   background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
@@ -77,10 +50,10 @@ p {
 }
 
 .footer-description {
-  max-width: 600px;
-  margin: 0 auto 30px;
+  /* max-width: 620px; */
+  margin: 0 auto 10px;
   line-height: 1.6;
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .footer-links {
@@ -91,18 +64,19 @@ p {
   margin-bottom: 40px;
 }
 
-.link-column {
-  text-align: left;
+.footer .link-column {
+  text-align: center;
+  width: 30%;
 }
 
-.link-column h3 {
+.footer .link-column h3 {
   margin-bottom: 15px;
   font-size: 18px;
   position: relative;
   display: inline-block;
 }
 
-.link-column h3::after {
+.footer .link-column h3::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -112,33 +86,33 @@ p {
   background: #fdbb2d;
 }
 
-.link-column ul {
+.footer .link-column ul {
   list-style: none;
 }
 
-.link-column li {
+.footer .link-column li {
   margin-bottom: 10px;
 }
 
-.link-column a {
+.footer .link-column a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
-.link-column a:hover {
+.footer .link-column a:hover {
   color: white;
   padding-left: 5px;
 }
 
-.social-icons {
+.footer .social-icons {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-bottom: 40px;
 }
 
-.social-icon {
+.footer .social-icon {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -150,12 +124,12 @@ p {
   cursor: pointer;
 }
 
-.social-icon:hover {
+.footer .social-icon:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-5px);
 }
 
-.copyright {
+.footer .copyright {
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
@@ -164,16 +138,17 @@ p {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .footer-links {
+  .footer .footer-links {
     flex-direction: column;
     gap: 20px;
   }
 
-  .link-column {
+  .footer .link-column {
     text-align: center;
+    width: 100%;
   }
 
-  .link-column h3::after {
+  .footer .link-column h3::after {
     left: 50%;
     transform: translateX(-50%);
   }

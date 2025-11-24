@@ -4,6 +4,7 @@ import { ReactNode, useState } from 'react';
 import ResponsiveNavbar from '@/components/layout/responsiveNavbar';
 import Sidebar from '@/components/layout/sidebar';
 import Footer from '@/components/footer/page';
+import NavigationWithDropdown from './navigationWithDropdown';
 
 interface LayoutProps {
     children: ReactNode;
@@ -37,8 +38,9 @@ export default function Layout({ children }: LayoutProps) {
             <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300`}>
                 {/* 顶部导航栏 */}
                 <ResponsiveNavbar onToggleSidebar={toggleSidebar} />
+                <NavigationWithDropdown />
                 {/* 页面内容 */}
-                <main className="flex-1 p-6">
+                <main className="flex-1 p-6 blackgroldcolor">
                     {children}
                 </main>
                 {/* 页脚 */}
