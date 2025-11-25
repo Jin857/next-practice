@@ -6,8 +6,6 @@ import H5Sidebar from '@/components/layout/h5Sidebar';
 import { SidebarItem } from '@/app/config/config';
 import WebSidebar from '@/components/layout/webSidebar';
 
-
-
 interface SidebarProps {
     /// H5 导航栏
     isOpen: boolean;
