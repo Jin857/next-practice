@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import H5Sidebar from '@/components/layout/h5Sidebar';
-import { sidebarItems } from '@/app/config/config';
+import { SidebarItem } from '@/app/config/config';
 import WebSidebar from '@/components/layout/webSidebar';
 
 
@@ -15,13 +15,15 @@ interface SidebarProps {
     /// Web 导航栏
     isCollapsed?: boolean;
     onToggle?: () => void;
+    sidebarItems: SidebarItem[];
 }
 
 export default function Sidebar({
     isOpen,
     onClose,
     isCollapsed = false,
-    onToggle
+    onToggle,
+    sidebarItems
 }: SidebarProps) {
     const pathname = usePathname();
     const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());

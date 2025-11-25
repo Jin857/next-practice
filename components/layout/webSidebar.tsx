@@ -118,14 +118,7 @@ export default function WebSidebar({
                 </ul>
             </nav>
 
-            {/* 底部 */}
-            {!isCollapsed && (
-                <div className="p-4 border-t">
-                    <div className="text-center text-sm text-gray-500">
-                        © 2024 您的品牌
-                    </div>
-                </div>
-            )}
+
         </div>
     );
 }

@@ -1,10 +1,10 @@
 "use client";
 
 import { ReactNode, useState } from 'react';
-import ResponsiveNavbar from '@/components/layout/responsiveNavbar';
 import Sidebar from '@/components/layout/sidebar';
 import Footer from '@/components/footer/page';
-import NavigationWithDropdown from './navigationWithDropdown';
+import { sidebarItems } from '@/app/config/config';
+import ResponsiveNavbarPro from './responsiveNavbarPro';
 
 interface LayoutProps {
     children: ReactNode;
@@ -29,6 +29,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="min-h-screen bg-gray-50 flex">
             {/* 侧边栏 */}
             <Sidebar
+                sidebarItems={sidebarItems}
                 isOpen={isSidebarOpen}
                 onClose={toggleSidebar}
                 isCollapsed={isSidebarCollapsed}
@@ -37,8 +38,10 @@ export default function Layout({ children }: LayoutProps) {
             {/* 主内容区域 */}
             <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300`}>
                 {/* 顶部导航栏 */}
-                <ResponsiveNavbar onToggleSidebar={toggleSidebar} />
-                <NavigationWithDropdown />
+                <ResponsiveNavbarPro sidebarItems={sidebarItems}
+                    onToggleSidebar={toggleSidebar}
+                    children={<div>自定义内容</div>}
+                />
                 {/* 页面内容 */}
                 <main className="flex-1 p-6 blackgroldcolor">
                     {children}

@@ -47,36 +47,3 @@ export const sidebarItems: SidebarItem[] = [
         icon: PhoneIcon,
     },
 ];
-
-
-// 扩展导航项类型以支持下拉菜单
-export interface NavigationItem {
-    name: string;
-    href: string;
-    children?: NavigationItem[]; // 可选的子菜单项
-}
-
-// 示例导航数据
-export const navigation: NavigationItem[] = [
-    { name: '首页', href: '/' },
-    {
-        name: '产品',
-        href: '/products',
-        children: [
-            { name: '产品A', href: '/products/a' },
-            { name: '产品B', href: '/products/b' },
-            { name: '产品C', href: '/products/c' },
-        ]
-    },
-    {
-        name: '服务',
-        href: '/services',
-        children: [
-            { name: '咨询', href: '/services/consulting' },
-            { name: '开发', href: '/services/development' },
-            { name: '维护', href: '/services/maintenance' },
-        ]
-    },
-    { name: '关于我们', href: '/about' },
-    { name: '联系我们', href: '/contact' },
-];

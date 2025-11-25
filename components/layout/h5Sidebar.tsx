@@ -129,13 +129,6 @@ export default function H5Sidebar({
                             ))}
                         </ul>
                     </nav>
-
-                    {/* 底部 */}
-                    <div className="p-4 border-t">
-                        <div className="text-center text-sm text-gray-500">
-                            © 2024 您的品牌
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

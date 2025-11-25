@@ -1,72 +1,79 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ReactNode } from 'react';
 import Link from 'next/link';
-import { navigation, NavigationItem } from '@/app/config/config';
+import { SidebarItem } from '@/app/config/config';
+import { Bars4Icon } from '@heroicons/react/24/outline';
 
-// 在 NavigationWithDropdown 组件中添加移动端菜单
-export default function NavigationWithDropdown() {
+interface ResponsiveNavbarProProps {
+    /// 外部是否存在
+    onToggleSidebar?: () => void;
+    sidebarItems: SidebarItem[];
+    children?: ReactNode;
+}
+
+export default function ResponsiveNavbarPro(
+    { onToggleSidebar, sidebarItems, children }: ResponsiveNavbarProProps
+) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <nav className="bg-white shadow-sm border-b">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                    {/* 桌面端导航 */}
-                    <div className="flex">
-                        <div className="flex-shrink-0 flex items-center">
-                            <Link href="/" className="text-xl font-bold text-gray-800">
-                                您的品牌
-                            </Link>
+        <header className="bg-white shadow-sm sticky top-0 z-40">
+            <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 h-16 lg:px-8" aria-label="Global">
+                <div className="flex items-center gap-x-4">
+                    <Link href="/" className="flex items-center">
+                        <div className="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                            Logo
                         </div>
-
-                        <div className="hidden sm:ml-6 sm:flex sm:space-x-2">
-                            {navigation.map((item) => (
-                                <DropdownNavItem key={item.name} item={item} />
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* 移动端菜单按钮 */}
-                    <div className="sm:hidden flex items-center">
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-                        >
-                            <span className="sr-only">打开主菜单</span>
-                            {/* 菜单图标 */}
-                            <svg
-                                className="h-6 w-6"
-                                stroke="currentColor"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-                                />
-                            </svg>
-                        </button>
-                    </div>
+                        <span className="ml-2 text-lg font-semibold text-gray-900 hidden sm:block">
+                            品牌名称
+                        </span>
+                    </Link>
+                </div>
+                <div className="hidden lg:flex lg:gap-x-8">
+                    {children ?? sidebarItems.map((item) => (
+                        <DropdownNavItem key={item.name} item={item} />
+                    ))}
                 </div>
 
-                {/* 移动端菜单 */}
-                {mobileMenuOpen && (
-                    <div className="sm:hidden">
-                        <div className="pt-2 pb-3 space-y-1">
-                            {navigation.map((item) => (
-                                <MobileNavItem key={item.name} item={item} />
-                            ))}
-                        </div>
+                {/* 右侧：移动端菜单按钮和用户操作 */}
+                <div className="flex items-center gap-x-4" >
+                    <button
+                        onClick={() => { onToggleSidebar != null && children == null ? onToggleSidebar() : setMobileMenuOpen(!mobileMenuOpen) }}
+                        className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                    >
+                        <Bars4Icon className="h-5 w-5 text-gray-600" />
+                    </button>
+                    {/* 桌面端用户操作 */}
+                    < div className="hidden lg:flex lg:items-center lg:gap-x-4" >
+                        <Link
+                            href="/login"
+                            className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors"
+                        >
+                            登录
+                        </Link>
+                        <Link
+                            href="/register"
+                            className="text-sm font-semibold leading-3 bg-blue-600 text-white px-2 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                        >
+                            注册
+                        </Link>
                     </div>
-                )}
-            </div>
-        </nav>
+                </div>
+            </nav>
+            {mobileMenuOpen && (
+                <div className="lg:hidden">
+                    <div className="pt-2 pb-3 space-y-1">
+                        {sidebarItems.map((item) => (
+                            <MobileNavItem key={item.name} item={item} />
+                        ))}
+                    </div>
+                </div>
+            )}
+        </header >
     );
 }
 
 // 移动端导航项组件
-function MobileNavItem({ item }: { item: NavigationItem }) {
+function MobileNavItem({ item }: { item: SidebarItem }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     // 如果没有子菜单，渲染普通链接
@@ -120,7 +127,7 @@ function MobileNavItem({ item }: { item: NavigationItem }) {
 }
 
 // 下拉菜单导航项组件
-function DropdownNavItem({ item }: { item: NavigationItem }) {
+function DropdownNavItem({ item }: { item: SidebarItem }) {
     const [isOpen, setIsOpen] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -179,16 +186,12 @@ function DropdownNavItem({ item }: { item: NavigationItem }) {
         >
             {/* 主导航项 */}
             <button
-                className={`inline-flex items-center px-3 py-2 text-sm font-medium transition-colors ${isOpen
-                    ? 'text-blue-600'
-                    : 'text-gray-900 hover:text-blue-600'
-                    }`}
+                className={`inline-flex items-center px-3 py-2 text-sm font-medium content-center h-16 ${isOpen ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'}`}
             >
                 <span>{item.name}</span>
                 {/* 下拉图标 */}
                 <svg
-                    className={`ml-1 h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''
-                        }`}
+                    className={`ml-1 h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -196,10 +199,9 @@ function DropdownNavItem({ item }: { item: NavigationItem }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
             </button>
-
             {/* 下拉菜单 */}
             {isOpen && (
-                <div className="absolute left-0 mt-1 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                <div className="absolute left-0 mt-1 w-56 rounded-md shadow-lg bg-white ring-opacity-5 z-50">
                     <div className="py-1">
                         {item.children.map((child) => (
                             <Link
